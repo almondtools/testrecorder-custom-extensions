@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.amygdalum</groupId>
+	<artifactId>testrecorder-custom-extensions</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>${project.groupId}:${project.artifactId}</name>
+
+
+	<licenses>
+		<license>
+			<name>GNU LESSER GENERAL PUBLIC LICENSE (LGPL)</name>
+			<url>http://www.gnu.org/licenses/lgpl.txt</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Stefan Mandel</name>
+			<email>mail@amygdalum.net</email>
+			<organization>amygdalum</organization>
+			<organizationUrl>http://www.amygdalum.net/</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:git@github.com:almondtools/testrecorder-custom-extensions.git</connection>
+		<developerConnection>scm:git:git@github.com:almondtools/testrecorder-custom-extensions.git</developerConnection>
+		<url>git@github.com:almondtools/testrecorder-custom-extensions.git</url>
+		<tag>HEAD</tag>
+	</scm>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.amygdalum</groupId>
+			<artifactId>testrecorder</artifactId>
+			<version>0.2.11-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<id>make-assembly-with-dependencies-merge-services</id>
+						<phase>package</phase>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/jar-with-dependencies-merge-services.xml</descriptor>
+							</descriptors>
+							<archive>
+								<index>true</index>
+								<manifest>
+									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								</manifest>
+								<manifestEntries>
+									<Premain-Class>net.amygdalum.testrecorder.TestRecorderAgent</Premain-Class>
+								</manifestEntries>
+							</archive>
+						</configuration>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
