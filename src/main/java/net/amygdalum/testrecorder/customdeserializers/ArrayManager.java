@@ -61,9 +61,10 @@ public class ArrayManager {
 				buffer.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16).substring(1));
 			}
 
-			String fileName = buffer.toString() + ".array";
+			String fileName = "target/temp/" + buffer.toString() + ".array";
 
 			Path path = Paths.get(fileName);
+			Files.createDirectories(Paths.get("target/temp"));
 			Files.write(path, data);
 
 			return path.toAbsolutePath().toString().replace("\\", "\\\\");
