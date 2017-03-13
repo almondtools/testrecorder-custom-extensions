@@ -1,7 +1,7 @@
 package net.amygdalum.testrecorder.customdeserializers;
 
 
-import net.amygdalum.testrecorder.Snapshot;
+import net.amygdalum.testrecorder.Recorded;
 
 public class LargeIntArrays {
 	
@@ -15,7 +15,7 @@ public class LargeIntArrays {
 		this.entries = new int[0][0];
 	}
 
-	@Snapshot
+	@Recorded
 	public int[][] initInts(int entries) {
 		int counter = 0;
 		int[][] is = new int[entries][entries];
@@ -27,7 +27,7 @@ public class LargeIntArrays {
 		return is;
 	}
 
-	@Snapshot
+	@Recorded
 	public long sum() {
 		long sum = 0;
 		for (int i = 0; i < entries.length; i++) {
