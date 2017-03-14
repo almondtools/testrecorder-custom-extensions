@@ -13,7 +13,7 @@ public class AgentConfig extends DefaultTestRecorderAgentConfig {
 
 	@Override
 	public SnapshotConsumer getSnapshotConsumer() {
-		return new ScheduledTestGenerator(getInitializer())
+		return new ScheduledTestGenerator()
 			.withDumpOnCounterInterval(2)
 			.withClassName("${class}${counter}Test")
 			.withDumpOnShutDown(true)
@@ -30,8 +30,4 @@ public class AgentConfig extends DefaultTestRecorderAgentConfig {
 		return asList("net.amygdalum.testrecorder.customdeserializers");
 	}
 	
-	@Override
-	public Class<? extends Runnable> getInitializer() {
-		return null;
-	}
 }
