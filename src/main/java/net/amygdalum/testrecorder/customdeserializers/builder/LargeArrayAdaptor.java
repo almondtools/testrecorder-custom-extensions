@@ -16,8 +16,6 @@ import net.amygdalum.testrecorder.deserializers.builder.SetupGenerators;
 import net.amygdalum.testrecorder.values.SerializedArray;
 
 public class LargeArrayAdaptor extends DefaultSetupGenerator<SerializedArray> implements SetupGenerator<SerializedArray> {
-
-	
 	
 	@Override
 	public Class<SerializedArray> getAdaptedClass() {
