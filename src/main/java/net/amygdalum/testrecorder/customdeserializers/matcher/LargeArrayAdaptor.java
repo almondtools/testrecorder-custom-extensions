@@ -13,6 +13,7 @@ import net.amygdalum.testrecorder.DeserializationException;
 import net.amygdalum.testrecorder.customdeserializers.ArrayManager;
 import net.amygdalum.testrecorder.deserializers.Adaptor;
 import net.amygdalum.testrecorder.deserializers.Computation;
+import net.amygdalum.testrecorder.deserializers.DeserializerContext;
 import net.amygdalum.testrecorder.deserializers.TypeManager;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultArrayAdaptor;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultMatcherGenerator;
@@ -33,7 +34,7 @@ public class LargeArrayAdaptor extends DefaultMatcherGenerator<SerializedArray> 
 	}
 
 	@Override
-	public Computation tryDeserialize(SerializedArray value, MatcherGenerators generator) {
+	public Computation tryDeserialize(SerializedArray value, MatcherGenerators generator, DeserializerContext context) {
 		if (value.getArray().length > 100 && isIntArray(value.getComponentType())) {
 			TypeManager types = generator.getTypes();
 			types.staticImport(ArrayManager.class, "matchingIntArray");

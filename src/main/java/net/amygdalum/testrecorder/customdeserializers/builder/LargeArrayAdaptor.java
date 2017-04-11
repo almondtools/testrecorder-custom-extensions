@@ -9,6 +9,7 @@ import net.amygdalum.testrecorder.DeserializationException;
 import net.amygdalum.testrecorder.customdeserializers.ArrayManager;
 import net.amygdalum.testrecorder.deserializers.Adaptor;
 import net.amygdalum.testrecorder.deserializers.Computation;
+import net.amygdalum.testrecorder.deserializers.DeserializerContext;
 import net.amygdalum.testrecorder.deserializers.builder.DefaultArrayAdaptor;
 import net.amygdalum.testrecorder.deserializers.builder.DefaultSetupGenerator;
 import net.amygdalum.testrecorder.deserializers.builder.SetupGenerator;
@@ -28,7 +29,7 @@ public class LargeArrayAdaptor extends DefaultSetupGenerator<SerializedArray> im
 	}
 	
 	@Override
-	public Computation tryDeserialize(SerializedArray value, SetupGenerators generator) {
+	public Computation tryDeserialize(SerializedArray value, SetupGenerators generator, DeserializerContext context) {
 		if (value.getArray().length > 100 && isIntArray(value.getComponentType())) {
 			generator.getTypes().staticImport(ArrayManager.class, "readIntArray");
 			String fileName = ArrayManager.storeIntArray(value);
