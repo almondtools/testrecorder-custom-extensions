@@ -16,7 +16,8 @@ public class AgentConfig extends DefaultTestRecorderAgentConfig {
 		return new ScheduledTestGenerator()
 			.withDumpOnCounterInterval(2)
 			.withClassName("${class}${counter}Test")
-			.withDumpOnShutDown(true)
+			 .withDumpOnShutDown(true)
+			 .withDumpMaximum(1000)
 			.withDumpTo(Paths.get("target/generated"));
 	}
 	
