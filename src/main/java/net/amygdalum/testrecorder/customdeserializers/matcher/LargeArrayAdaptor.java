@@ -40,7 +40,7 @@ public class LargeArrayAdaptor extends DefaultMatcherGenerator<SerializedArray> 
 			types.staticImport(ArrayManager.class, "matchingIntArray");
 
 			String fileName = ArrayManager.storeIntArray(value);
-			return new Computation("matchingIntArray(\"" + fileName + "\")", parameterized(Matcher.class, null, wildcard()), new ArrayList<>());
+			return Computation.expression("matchingIntArray(\"" + fileName + "\")", parameterized(Matcher.class, null, wildcard()), new ArrayList<>());
 		}
 		throw new DeserializationException("matcher");
 	}

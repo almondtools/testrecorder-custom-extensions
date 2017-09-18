@@ -33,7 +33,7 @@ public class LargeArrayAdaptor extends DefaultSetupGenerator<SerializedArray> im
 		if (value.getArray().length > 100 && isIntArray(value.getComponentType())) {
 			generator.getTypes().staticImport(ArrayManager.class, "readIntArray");
 			String fileName = ArrayManager.storeIntArray(value);
-			return new Computation("readIntArray(\"" + fileName + "\")", value.getResultType(), new ArrayList<>());
+			return Computation.expression("readIntArray(\"" + fileName + "\")", value.getResultType(), new ArrayList<>());
 		}
 		throw new DeserializationException("not large array");
 	}
