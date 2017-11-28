@@ -9,16 +9,16 @@ import java.util.ArrayList;
 
 import org.hamcrest.Matcher;
 
-import net.amygdalum.testrecorder.DeserializationException;
 import net.amygdalum.testrecorder.customdeserializers.ArrayManager;
 import net.amygdalum.testrecorder.deserializers.Adaptor;
 import net.amygdalum.testrecorder.deserializers.Computation;
-import net.amygdalum.testrecorder.deserializers.DeserializerContext;
 import net.amygdalum.testrecorder.deserializers.TypeManager;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultArrayAdaptor;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultMatcherGenerator;
 import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerator;
 import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerators;
+import net.amygdalum.testrecorder.types.DeserializationException;
+import net.amygdalum.testrecorder.types.DeserializerContext;
 import net.amygdalum.testrecorder.values.SerializedArray;
 
 public class LargeArrayAdaptor extends DefaultMatcherGenerator<SerializedArray> implements MatcherGenerator<SerializedArray> {

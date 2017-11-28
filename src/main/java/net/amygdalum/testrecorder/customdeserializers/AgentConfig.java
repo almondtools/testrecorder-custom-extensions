@@ -6,9 +6,9 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import net.amygdalum.testrecorder.DefaultTestRecorderAgentConfig;
-import net.amygdalum.testrecorder.Packages;
 import net.amygdalum.testrecorder.ScheduledTestGenerator;
 import net.amygdalum.testrecorder.SnapshotConsumer;
+import net.amygdalum.testrecorder.profile.Classes;
 
 public class AgentConfig extends DefaultTestRecorderAgentConfig {
 
@@ -28,8 +28,8 @@ public class AgentConfig extends DefaultTestRecorderAgentConfig {
 	}
 
 	@Override
-	public List<Packages> getPackages() {
-		return asList(Packages.byName("net.amygdalum.testrecorder.customdeserializers"));
+	public List<Classes> getClasses() {
+		return asList(Classes.byPackage("net.amygdalum.testrecorder.customdeserializers"));
 	}
 	
 }
