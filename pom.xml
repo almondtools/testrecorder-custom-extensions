@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>net.amygdalum</groupId>
 			<artifactId>testrecorder</artifactId>
-			<version>0.3.9</version>
+			<version>0.3.10</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -73,7 +73,10 @@
 									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 								</manifest>
 								<manifestEntries>
-									<Premain-Class>net.amygdalum.testrecorder.TestRecorderAgent</Premain-Class>
+                                    <Premain-Class>net.amygdalum.testrecorder.TestRecorderAgent</Premain-Class>
+                                    <Agent-Class>net.amygdalum.testrecorder.TestRecorderAgent</Agent-Class>
+                                    <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                                    <Can-Retransform-Classes>true</Can-Retransform-Classes>
 								</manifestEntries>
 							</archive>
 						</configuration>
