@@ -36,7 +36,7 @@ public class LargeArrayAdaptor extends DefaultMatcherGenerator<SerializedArray> 
 	@Override
 	public Computation tryDeserialize(SerializedArray value, MatcherGenerators generator, DeserializerContext context) {
 		if (value.getArray().length > 100 && isIntArray(value.getComponentType())) {
-			TypeManager types = generator.getTypes();
+			TypeManager types = context.getTypes();
 			types.staticImport(ArrayManager.class, "matchingIntArray");
 
 			String fileName = ArrayManager.storeIntArray(value);
