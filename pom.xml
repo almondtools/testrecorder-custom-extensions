@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>net.amygdalum</groupId>
 			<artifactId>testrecorder</artifactId>
-			<version>0.3.12</version>
+			<version>0.4.0</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -54,37 +54,6 @@
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
 				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.2</version>
-				<executions>
-					<execution>
-						<id>make-assembly-with-dependencies-merge-services</id>
-						<phase>package</phase>
-						<configuration>
-							<descriptors>
-								<descriptor>src/main/assembly/jar-with-dependencies-merge-services.xml</descriptor>
-							</descriptors>
-							<archive>
-								<index>true</index>
-								<manifest>
-									<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-									<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-								</manifest>
-								<manifestEntries>
-                                    <Premain-Class>net.amygdalum.testrecorder.TestRecorderAgent</Premain-Class>
-                                    <Agent-Class>net.amygdalum.testrecorder.TestRecorderAgent</Agent-Class>
-                                    <Can-Redefine-Classes>true</Can-Redefine-Classes>
-                                    <Can-Retransform-Classes>true</Can-Retransform-Classes>
-								</manifestEntries>
-							</archive>
-						</configuration>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
