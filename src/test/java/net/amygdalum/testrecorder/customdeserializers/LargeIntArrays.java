@@ -1,7 +1,7 @@
 package net.amygdalum.testrecorder.customdeserializers;
 
 
-import net.amygdalum.testrecorder.Recorded;
+import net.amygdalum.testrecorder.profile.Recorded;
 
 public class LargeIntArrays {
 	
