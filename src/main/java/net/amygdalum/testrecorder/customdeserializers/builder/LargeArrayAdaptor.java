@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 import net.amygdalum.testrecorder.customdeserializers.ArrayManager;
 import net.amygdalum.testrecorder.deserializers.Adaptor;
+import net.amygdalum.testrecorder.deserializers.Deserializer;
 import net.amygdalum.testrecorder.deserializers.builder.DefaultArrayAdaptor;
 import net.amygdalum.testrecorder.deserializers.builder.DefaultSetupGenerator;
 import net.amygdalum.testrecorder.deserializers.builder.SetupGenerator;
-import net.amygdalum.testrecorder.deserializers.builder.SetupGenerators;
 import net.amygdalum.testrecorder.types.Computation;
 import net.amygdalum.testrecorder.types.DeserializationException;
 import net.amygdalum.testrecorder.types.DeserializerContext;
@@ -25,12 +25,13 @@ public class LargeArrayAdaptor extends DefaultSetupGenerator<SerializedArray> im
 	}
 
 	@Override
-	public Class<? extends Adaptor<SerializedArray, SetupGenerators>> parent() {
+	public Class<? extends Adaptor<SerializedArray>> parent() {
 		return DefaultArrayAdaptor.class;
 	}
 	
 	@Override
-	public Computation tryDeserialize(SerializedArray value, SetupGenerators generator, DeserializerContext context) {
+	public Computation tryDeserialize(SerializedArray value, Deserializer generator) {
+		DeserializerContext context = generator.getContext();
 		if (value.getArray().length > 100 && isIntArray(value.getComponentType())) {
 			context.getTypes().staticImport(ArrayManager.class, "readIntArray");
 			String fileName = ArrayManager.storeIntArray(value);

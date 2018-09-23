@@ -11,10 +11,10 @@ import org.hamcrest.Matcher;
 
 import net.amygdalum.testrecorder.customdeserializers.ArrayManager;
 import net.amygdalum.testrecorder.deserializers.Adaptor;
+import net.amygdalum.testrecorder.deserializers.Deserializer;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultArrayAdaptor;
 import net.amygdalum.testrecorder.deserializers.matcher.DefaultMatcherGenerator;
 import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerator;
-import net.amygdalum.testrecorder.deserializers.matcher.MatcherGenerators;
 import net.amygdalum.testrecorder.types.Computation;
 import net.amygdalum.testrecorder.types.DeserializationException;
 import net.amygdalum.testrecorder.types.DeserializerContext;
@@ -29,12 +29,13 @@ public class LargeArrayAdaptor extends DefaultMatcherGenerator<SerializedArray> 
 	}
 
 	@Override
-	public Class<? extends Adaptor<SerializedArray, MatcherGenerators>> parent() {
+	public Class<? extends Adaptor<SerializedArray>> parent() {
 		return DefaultArrayAdaptor.class;
 	}
 
 	@Override
-	public Computation tryDeserialize(SerializedArray value, MatcherGenerators generator, DeserializerContext context) {
+	public Computation tryDeserialize(SerializedArray value, Deserializer generator) {
+		DeserializerContext context = generator.getContext();
 		if (value.getArray().length > 100 && isIntArray(value.getComponentType())) {
 			TypeManager types = context.getTypes();
 			types.staticImport(ArrayManager.class, "matchingIntArray");
